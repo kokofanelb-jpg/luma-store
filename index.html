@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Luma Store - минималистичный яркий онлайн-магазин подарков и декора.">
+  <title>Luma Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Перейти к контенту</a>
+
+  <div class="bg-orb orb-1" aria-hidden="true"></div>
+  <div class="bg-orb orb-2" aria-hidden="true"></div>
+
+  <header class="container">
+    <nav class="glass nav">
+      <div class="logo">Luma<span>Store</span></div>
+      <ul>
+        <li><a href="./index.html" aria-current="page">Главная</a></li>
+        <li><a href="./catalog.html">Каталог</a></li>
+        <li><a href="./about.html">О бренде</a></li>
+        <li><a href="./contacts.html">Контакты</a></li>
+      </ul>
+      <button class="btn btn-small magnetic">Корзина</button>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="container hero glass reveal">
+      <div>
+        <p class="overline">Минимализм + Яркие акценты</p>
+        <h1>Онлайн-магазин, в который<br>приятно возвращаться</h1>
+        <p class="muted">Больше динамики, мягкие эффекты стекла и удобная структура из нескольких страниц для глубокого изучения товаров.</p>
+        <div class="hero-actions">
+          <a class="btn magnetic" href="./catalog.html">Перейти в каталог</a>
+          <a class="btn btn-ghost" href="./about.html">История бренда</a>
+        </div>
+      </div>
+      <div class="hero-card glass-soft floating-card" aria-label="Промо предложение">
+        <p>Скидка этой недели</p>
+        <h2>-30%</h2>
+        <p>на коллекцию Neon Home</p>
+      </div>
+    </section>
+
+    <section class="container marquee glass reveal" aria-label="Преимущества">
+      <div class="marquee-track">
+        <span>Бесплатная доставка от 3000 ₽</span>
+        <span>Мягкие анимации без перегруза</span>
+        <span>Адаптив для телефона и ноутбука</span>
+        <span>Стильный glass-дизайн</span>
+        <span>Быстрое оформление заказа</span>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="section-head reveal">
+        <h2>Что посмотреть дальше</h2>
+        <p class="muted">Добавили больше страниц, чтобы пользователю было интересно кликать и изучать магазин.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card glass reveal tilt-card">
+          <div class="thumb thumb-1" role="img" aria-label="Каталог"></div>
+          <h3>Большой каталог</h3>
+          <p class="muted">Фильтры по категориям и красивые карточки.</p>
+          <div class="row">
+            <a class="btn btn-small magnetic" href="./catalog.html">Открыть</a>
+          </div>
+        </article>
+        <article class="card glass reveal tilt-card">
+          <div class="thumb thumb-2" role="img" aria-label="О бренде"></div>
+          <h3>О бренде</h3>
+          <p class="muted">Кто мы, как выбираем товары и наши ценности.</p>
+          <div class="row">
+            <a class="btn btn-small magnetic" href="./about.html">Читать</a>
+          </div>
+        </article>
+        <article class="card glass reveal tilt-card">
+          <div class="thumb thumb-4" role="img" aria-label="Контакты"></div>
+          <h3>Контакты и помощь</h3>
+          <p class="muted">Форма обратной связи и быстрые ответы.</p>
+          <div class="row">
+            <a class="btn btn-small magnetic" href="./contacts.html">Связаться</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section glass reveal">
+      <h2>Нам доверяют</h2>
+      <div class="feature-list">
+        <p><strong class="counter" data-target="12000">0</strong><br><span class="muted">довольных клиентов</span></p>
+        <p><strong class="counter" data-target="430">0</strong><br><span class="muted">товаров в каталоге</span></p>
+        <p><strong class="counter" data-target="98">0</strong><br><span class="muted">% положительных отзывов</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>© 2026 Luma Store</p>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Контакты Luma Store - связь с магазином и поддержка.">
+  <title>Luma Store | Контакты</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Перейти к контенту</a>
+  <div class="bg-orb orb-1" aria-hidden="true"></div>
+  <div class="bg-orb orb-2" aria-hidden="true"></div>
+
+  <header class="container">
+    <nav class="glass nav">
+      <div class="logo">Luma<span>Store</span></div>
+      <ul>
+        <li><a href="./index.html">Главная</a></li>
+        <li><a href="./catalog.html">Каталог</a></li>
+        <li><a href="./about.html">О бренде</a></li>
+        <li><a href="./contacts.html" aria-current="page">Контакты</a></li>
+      </ul>
+      <button class="btn btn-small magnetic">Корзина</button>
+    </nav>
+  </header>
+
+  <main id="main-content" class="container">
+    <section class="page-title glass reveal">
+      <p class="overline">Контакты</p>
+      <h1>Мы на связи каждый день</h1>
+      <p class="muted">Если нужна помощь с выбором - оставь сообщение, ответим быстро.</p>
+    </section>
+
+    <section class="section contact-layout">
+      <article class="glass reveal" style="padding: 18px; border-radius: 18px;">
+        <h2>Написать нам</h2>
+        <form>
+          <label class="field">Имя
+            <input type="text" name="name" placeholder="Твое имя" required>
+          </label>
+          <label class="field">Телефон
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+          </label>
+          <label class="field">Сообщение
+            <textarea name="message" rows="4" placeholder="Хочу подобрать подарок..."></textarea>
+          </label>
+          <button class="btn magnetic" type="submit">Отправить</button>
+        </form>
+      </article>
+
+      <article class="glass reveal" style="padding: 18px; border-radius: 18px;">
+        <h2>Информация</h2>
+        <p class="muted">Телефон: +7 (900) 123-45-67</p>
+        <p class="muted">Email: hello@lumastore.ru</p>
+        <p class="muted">Время работы: 10:00 - 21:00</p>
+        <div class="thumb thumb-2" style="margin-top: 16px;" aria-label="Карта"></div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>© 2026 Luma Store</p>
+  </footer>
+  <script src="./app.js" defer></script>
+</body>
+</html>

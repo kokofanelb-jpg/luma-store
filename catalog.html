@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Каталог Luma Store - товары для дома, декора и подарков.">
+  <title>Luma Store | Каталог</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Перейти к контенту</a>
+  <div class="bg-orb orb-1" aria-hidden="true"></div>
+  <div class="bg-orb orb-2" aria-hidden="true"></div>
+
+  <header class="container">
+    <nav class="glass nav">
+      <div class="logo">Luma<span>Store</span></div>
+      <ul>
+        <li><a href="./index.html">Главная</a></li>
+        <li><a href="./catalog.html" aria-current="page">Каталог</a></li>
+        <li><a href="./about.html">О бренде</a></li>
+        <li><a href="./contacts.html">Контакты</a></li>
+      </ul>
+      <button class="btn btn-small magnetic">Корзина</button>
+    </nav>
+  </header>
+
+  <main id="main-content" class="container">
+    <section class="page-title glass reveal">
+      <p class="overline">Каталог</p>
+      <h1>Выбирай по настроению</h1>
+      <p class="muted">Добавили фильтры, чтобы пользователь мог быстро изучать разные категории.</p>
+      <div class="chips" role="tablist" aria-label="Фильтры каталога">
+        <button class="chip is-active" data-filter="all">Все</button>
+        <button class="chip" data-filter="decor">Декор</button>
+        <button class="chip" data-filter="textile">Текстиль</button>
+        <button class="chip" data-filter="gift">Подарки</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid">
+        <article class="card glass reveal tilt-card" data-category="decor">
+          <div class="thumb thumb-1"></div>
+          <h3>Светильник Glow</h3>
+          <p class="muted">Мягкий вечерний свет</p>
+          <div class="row"><strong>2 990 ₽</strong><button class="btn btn-small magnetic">В корзину</button></div>
+        </article>
+        <article class="card glass reveal tilt-card" data-category="textile">
+          <div class="thumb thumb-2"></div>
+          <h3>Плед Cloud</h3>
+          <p class="muted">Легкий и теплый</p>
+          <div class="row"><strong>3 590 ₽</strong><button class="btn btn-small magnetic">В корзину</button></div>
+        </article>
+        <article class="card glass reveal tilt-card" data-category="gift">
+          <div class="thumb thumb-3"></div>
+          <h3>Gift Box Soft</h3>
+          <p class="muted">Готовый набор в подарок</p>
+          <div class="row"><strong>4 490 ₽</strong><button class="btn btn-small magnetic">В корзину</button></div>
+        </article>
+        <article class="card glass reveal tilt-card" data-category="decor">
+          <div class="thumb thumb-4"></div>
+          <h3>Ваза Crystal</h3>
+          <p class="muted">Чистая минималистичная форма</p>
+          <div class="row"><strong>2 190 ₽</strong><button class="btn btn-small magnetic">В корзину</button></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>© 2026 Luma Store</p>
+  </footer>
+  <script src="./app.js" defer></script>
+</body>
+</html>
