@@ -1,3 +1,8 @@
+// ========================
+// LUMA STORE - FIXED APP
+// ========================
+
+// Intersection Observer для reveal анимаций
 const revealElements = document.querySelectorAll(".reveal");
 
 if ("IntersectionObserver" in window) {
@@ -18,6 +23,9 @@ if ("IntersectionObserver" in window) {
   revealElements.forEach((el) => el.classList.add("visible"));
 }
 
+// ==========================================
+// COUNTER ANIMATION (оптимизировано)
+// ==========================================
 const counters = document.querySelectorAll(".counter");
 const animatedCounters = new Set();
 
@@ -55,6 +63,9 @@ if ("IntersectionObserver" in window && counters.length > 0) {
   counters.forEach((counter) => counterObserver.observe(counter));
 }
 
+// ==========================================
+// FILTER FUNCTIONALITY
+// ==========================================
 const filterButtons = document.querySelectorAll("[data-filter]");
 const filterCards = document.querySelectorAll("[data-category]");
 
@@ -75,6 +86,9 @@ if (filterButtons.length > 0 && filterCards.length > 0) {
   });
 }
 
+// ==========================================
+// MAGNETIC BUTTON EFFECT (оптимизировано)
+// ==========================================
 const magneticButtons = document.querySelectorAll(".magnetic");
 
 magneticButtons.forEach((button) => {
@@ -97,6 +111,9 @@ magneticButtons.forEach((button) => {
   });
 });
 
+// ==========================================
+// TILT CARD EFFECT (оптимизировано)
+// ==========================================
 const tiltCards = document.querySelectorAll(".tilt-card");
 
 tiltCards.forEach((card) => {
@@ -123,14 +140,23 @@ tiltCards.forEach((card) => {
   });
 });
 
-const form = document.querySelector("form");
-if (form) {
+// ==========================================
+// FORM HANDLING (SAFE)
+// ==========================================
+const forms = document.querySelectorAll("form");
+forms.forEach((form) => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     
-    const name = form.querySelector('[name="name"]').value;
-    const phone = form.querySelector('[name="phone"]').value;
-    const message = form.querySelector('[name="message"]').value;
+    const nameInput = form.querySelector('[name="name"]');
+    const phoneInput = form.querySelector('[name="phone"]');
+    const messageInput = form.querySelector('[name="message"]');
+
+    if (!nameInput || !phoneInput || !messageInput) return;
+
+    const name = nameInput.value;
+    const phone = phoneInput.value;
+    const message = messageInput.value;
 
     if (!name || !phone || !message) {
       alert("Заполни все поля!");
@@ -140,8 +166,11 @@ if (form) {
     alert(`Спасибо, ${name}! Мы вскоре свяжемся по номеру ${phone}`);
     form.reset();
   });
-}
+});
 
+// ==========================================
+// SMOOTH SCROLL
+// ==========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -152,6 +181,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// ==========================================
+// MARQUEE ANIMATION (fix для бесконечной прокрутки)
+// ==========================================
 const marqueeTrack = document.querySelector(".marquee-track");
 if (marqueeTrack) {
   const marqueeItems = marqueeTrack.innerHTML;
