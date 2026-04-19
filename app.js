@@ -19,28 +19,35 @@ if ("IntersectionObserver" in window) {
 }
 
 const counters = document.querySelectorAll(".counter");
+const animatedCounters = new Set();
+
 const animateCounter = (element) => {
+  if (animatedCounters.has(element)) return;
+  animatedCounters.add(element);
+
   const target = Number(element.dataset.target || 0);
-  let start = 0;
-  const step = Math.max(1, Math.floor(target / 60));
-  const tick = () => {
-    start += step;
-    if (start >= target) {
+  let current = 0;
+  const increment = target / 60;
+  
+  const update = () => {
+    current += increment;
+    if (current >= target) {
       element.textContent = `${target}+`;
-      return;
+    } else {
+      element.textContent = `${Math.floor(current)}+`;
+      requestAnimationFrame(update);
     }
-    element.textContent = `${start}+`;
-    requestAnimationFrame(tick);
   };
-  tick();
+  
+  update();
 };
 
 if ("IntersectionObserver" in window && counters.length > 0) {
-  const counterObserver = new IntersectionObserver((entries, observer) => {
+  const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         animateCounter(entry.target);
-        observer.unobserve(entry.target);
+        counterObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.5 });
@@ -55,6 +62,7 @@ if (filterButtons.length > 0 && filterCards.length > 0) {
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const activeFilter = button.dataset.filter;
+      
       filterButtons.forEach((btn) => btn.classList.remove("is-active"));
       button.classList.add("is-active");
 
@@ -68,31 +76,86 @@ if (filterButtons.length > 0 && filterCards.length > 0) {
 }
 
 const magneticButtons = document.querySelectorAll(".magnetic");
+
 magneticButtons.forEach((button) => {
+  let timeoutId = null;
+
   button.addEventListener("mousemove", (event) => {
-    const rect = button.getBoundingClientRect();
-    const x = event.clientX - rect.left - rect.width / 2;
-    const y = event.clientY - rect.top - rect.height / 2;
-    button.style.transform = `translate(${x * 0.08}px, ${y * 0.08}px)`;
+    if (timeoutId) clearTimeout(timeoutId);
+    
+    timeoutId = setTimeout(() => {
+      const rect = button.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      button.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+    }, 0);
   });
 
   button.addEventListener("mouseleave", () => {
-    button.style.transform = "";
+    if (timeoutId) clearTimeout(timeoutId);
+    button.style.transform = "translate(0, 0)";
   });
 });
 
 const tiltCards = document.querySelectorAll(".tilt-card");
+
 tiltCards.forEach((card) => {
+  let isAnimating = false;
+
   card.addEventListener("mousemove", (event) => {
-    const rect = card.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width;
-    const y = (event.clientY - rect.top) / rect.height;
-    const rotateY = (x - 0.5) * 6;
-    const rotateX = (0.5 - y) * 6;
-    card.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    if (isAnimating) return;
+    
+    isAnimating = true;
+    requestAnimationFrame(() => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      const rotateY = (x - 0.5) * 8;
+      const rotateX = (0.5 - y) * 8;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+      isAnimating = false;
+    });
   });
 
   card.addEventListener("mouseleave", () => {
-    card.style.transform = "";
+    card.style.transform = "perspective(1000px) rotateX(0) rotateY(0) scale(1)";
   });
 });
+
+const form = document.querySelector("form");
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    const name = form.querySelector('[name="name"]').value;
+    const phone = form.querySelector('[name="phone"]').value;
+    const message = form.querySelector('[name="message"]').value;
+
+    if (!name || !phone || !message) {
+      alert("Заполни все поля!");
+      return;
+    }
+
+    alert(`Спасибо, ${name}! Мы вскоре свяжемся по номеру ${phone}`);
+    form.reset();
+  });
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+const marqueeTrack = document.querySelector(".marquee-track");
+if (marqueeTrack) {
+  const marqueeItems = marqueeTrack.innerHTML;
+  marqueeTrack.innerHTML = marqueeItems + marqueeItems;
+}
+
+console.log("✅ App loaded successfully");
